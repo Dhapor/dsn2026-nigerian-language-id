@@ -3,13 +3,13 @@
 Team **datapsalm** (Oludare Samuel, Victoria Fagbemiro, Sumayah Adegbite), DSN 2026 AI Bootcamp hackathon, ML track.
 
 Given a 2–30 s audio clip, predict which of 12 Nigerian languages is spoken (Yoruba, Igbo, Hausa, Eggon, Annang, Efik, Ibibio, Idoma, Igala, Nupe, Tiv, Urhobo) or `other`. Scored on Codabench as
-`language-weighted F1 × (0.5 + 0.5 × efficiency)`, where efficiency combines model size, peak memory and speed, and only F1 ≥ 0.60 is ranked.
+`language-weighted F1 × (0.5 + 0.5 × efficiency)`, where efficiency combines model size, peak memory and speed.
 
-**Best ranked submission:** [datapsalm/dsn2026-lid-f07](https://huggingface.co/datapsalm/dsn2026-lid-f07), F1 0.6247, efficiency 0.790, final score **0.5592** (3rd on the development leaderboard, 2026-10-21).
+**Best submission:** [datapsalm/dsn2026-lid-f07](https://huggingface.co/datapsalm/dsn2026-lid-f07), F1 0.6247, efficiency 0.790, final score **0.5592**.
 
 ## Approach
 
-1. **An African speech base.** [ajesujoba/AfriHuBERT](https://huggingface.co/ajesujoba/AfriHuBERT) (94.6M parameters), fine-tuned with a classification head. It out-scored Whisper-medium (F1 0.625 vs 0.613) at a third of the size.
+1. **An African speech base.** [ajesujoba/AfriHuBERT](https://huggingface.co/ajesujoba/AfriHuBERT) (94.6M parameters), fine-tuned with a classification head. It out-scored Whisper-medium (F1 0.625 vs 0.613) with 3× fewer parameters.
 2. **Robust training.** Noise, phone and reverb augmentation, speed perturbation, random 2–8 s crops (rounded to whole seconds so the Apple-GPU backend sees few input shapes). The final model trains on train + validation.
 3. **More speakers, openly licensed.** Our weakest classes have 2–3 training speakers, so we added 19 Ibibio speakers and 2 Efik speakers (see Data).
 4. **Model soup.** A uniform weight average of two fine-tunes from the same base (`soup.py`). On validation, averaging our two recipes scored F1 0.626 vs 0.608 and 0.594 for the single models, at no cost to size or speed.
@@ -19,11 +19,11 @@ Given a 2–30 s audio clip, predict which of 12 Nigerian languages is spoken (Y
 
 | Submission | Model | Change | Test F1 | Final |
 |---|---|---|---|---|
-| W01 | Whisper-base encoder | Baseline | 0.523 | 0.493 (not ranked) |
-| F04 | Whisper-medium encoder | Bigger model | 0.613 | 0.511 (ranked) |
-| A01 | AfriHuBERT, train only | African base, source-debiased recipe | 0.529 | 0.474 (not ranked) |
-| F05 | AfriHuBERT, train + val | All labelled data | 0.593 | 0.530 (not ranked) |
-| **F07** | AfriHuBERT, train + val + external | Plain recipe, +21 speakers | **0.625** | **0.559 (ranked 3rd)** |
+| W01 | Whisper-base encoder | Baseline | 0.523 | 0.493 |
+| F04 | Whisper-medium encoder | Bigger model | 0.613 | 0.511 |
+| A01 | AfriHuBERT, train only | African base, source-debiased recipe | 0.529 | 0.474 |
+| F05 | AfriHuBERT, train + val | All labelled data | 0.593 | 0.530 |
+| **F07** | AfriHuBERT, train + val + external | Plain recipe, +21 speakers | **0.625** | **0.559** |
 | S01 | Soup of F05 + F07 | Weight average | pending | pending |
 
 The full log, including validation results and what each run taught us, is in [EXPERIMENTS.md](EXPERIMENTS.md).
