@@ -1,7 +1,7 @@
 #!/bin/zsh
 # After F02: two bigger base models in parallel, both on train+validation, 3000 steps (F02a's step-3000 checkpoint scored best).
 # F03 = whisper-small encoder, H02 = mHuBERT-147. Each is exported and published when done.
-cd /Users/datapsalm/Desktop/ig/dsn2026
+cd "$(dirname "$0")/../.."
 F='warn|shards|UNEXPECTED|MISSING|MISMATCH'
 while pgrep -f "train.py --exp F02" >/dev/null; do sleep 20; done
 R='--full --epochs 2 --steps_per_epoch 1500 --speed 0.6 --src_bal --adv 0.3 --head_lr 1e-3'

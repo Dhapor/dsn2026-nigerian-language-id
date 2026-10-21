@@ -35,7 +35,7 @@ To beat 0.5685: whisper-base (eff 0.886) needs F1 >= 0.603; whisper-small (0.839
 7. **F05 test (sub 1008091, same zip re-run): F1 0.5925, eff 0.790, would-be 0.5304 (NOT RANKED).** The 09:51 failure was the runner, not fp16. vs leader: we win ibb 0.08/0.00, anw 0.77/0.72; lose urh 0.87/1.00 and ego 0.83/0.96 (both on precision), nup 0.47/0.59, efi 0.11/0.24. AfriHuBERT val->test gap ~0.08 (A01 val 0.669).
    Next: A01-best uploaded as is (train-only, val 0.669) to test whether full retraining helped; A03 = plain recipe (no adv/src_bal/chan).
 8. **F05b (fp32 config) test: F1 0.5931, speed 0.015 s (score 0.904), mem 1.62 GB, eff 0.767, would-be 0.5241.** Runner is a GPU: fp16 config is better (F05 eff 0.790). Keep fp16 exports.
-9. **A01 (train-only) test: F1 0.529 vs F05 (train+val) 0.593** -> full-data retraining is worth +0.06. A03 plain recipe val 0.671 (= A01). F06 = A03 on train+val (published, not uploaded: user saved the submission).
+9. **A01 (train-only) test: F1 0.529 vs F05 (train+val) 0.593** -> full-data retraining is worth +0.06. A03 plain recipe val 0.671 (= A01). F06 = A03 on train+val (published, not submitted: kept the upload for F07).
 10. **Winner godzilla 0.6078: AfriHuBERT 94.6M fp16, F1 0.679, eff 0.791.** Strong anw 0.97 / urh 0.99 / ego 0.96 / nup 0.73; weak ibb 0.06, efi 0.28.
 11. **External data allowed** (open license, credited; not the PROHIBITED_SOURCES corpora). Added offiongbassey/efik_speech_dataset (CC-BY-4.0, 3 h, 2 spk) and Common Voice 27.0 Ibibio (CC0, 3.6 h, 19 spk, <=100 clips/spk).
     F07 = plain recipe + train+val + both external sets, 4500 steps. Final candidate.
