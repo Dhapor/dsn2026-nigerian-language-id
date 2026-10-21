@@ -1,6 +1,6 @@
 # Find the Language I Am Speaking: DSN 2026 spoken language ID
 
-Team **datapsalm** (Oludare Samuel, Victoria Fagbemiro, Sumayah Adegbite), DSN 2026 AI Bootcamp hackathon, ML track.
+Team **Ohùn** (Codabench: datapsalm; Oludare Samuel, Victoria Fagbemiro, Sumayah Adegbite), DSN 2026 AI Bootcamp hackathon, ML track.
 
 Given a 2–30 s audio clip, predict which of 12 Nigerian languages is spoken (Yoruba, Igbo, Hausa, Eggon, Annang, Efik, Ibibio, Idoma, Igala, Nupe, Tiv, Urhobo) or `other`. Scored on Codabench as
 `language-weighted F1 × (0.5 + 0.5 × efficiency)`, where efficiency combines model size, peak memory and speed.
