@@ -66,6 +66,7 @@ Every run's exact command is kept in `scripts/runs/` (one script per batch of ru
 | `publish.py` | Writes the model card, pushes a new public repo and writes `submission.zip` |
 | `model_card.md` | Model card template |
 | `EXPERIMENTS.md` | Every experiment and its result |
+| `team_ohun_language_id.ipynb` | Notebook walkthrough: data, metric, augmentation, recipe choice, model soup, results, using the model |
 
 ## License
 
