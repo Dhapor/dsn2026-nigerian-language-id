@@ -1,0 +1,10 @@
+# large or generated: audio, checkpoints, exports
+/data/
+/runs/
+/export/
+/.venv/
+__pycache__/
+*.pyc
+.DS_Store
+submissions/*/submission.zip
+NEXT_STEPS.md
